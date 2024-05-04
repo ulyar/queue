@@ -1,0 +1,378 @@
+@font-face {
+ font-family: 'Gilroy-Bold';
+ src: url('../fonts/gilroy-bold.eot'); /* IE 9 Compatibility Mode */
+ src: url('../fonts/gilroy-bold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+  url('../fonts/gilroy-bold.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/gilroy-bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+  url('../fonts/gilroy-bold.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/gilroy-bold.svg#gilroy-bold') format('svg'); /* Chrome < 4, Legacy iOS */
+    }
+    @font-face {
+ font-family: 'Gilroy-Medium';
+ src: url('../fonts/gilroy-medium.eot'); /* IE 9 Compatibility Mode */
+ src: url('../fonts/gilroy-medium.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+  url('../fonts/gilroy-medium.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/gilroy-medium.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+  url('../fonts/gilroy-medium.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/gilroy-medium.svg#gilroy-medium') format('svg'); /* Chrome < 4, Legacy iOS */
+    }
+
+* {
+    font-family: 'Gilroy-Medium';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.head_main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: #50078C;
+}
+
+.img_head_l {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.button_theme {
+    background-image: url('../image/theme.svg');
+    background-size: cover;
+    background-color: transparent;
+
+    border: none;
+    margin-right: 0.1rem;
+
+    width: 60px;
+    height: 50px;
+}
+
+.p_head{
+    color: white;
+    font-size: 1.7rem;
+    margin-right: 82%;
+}
+
+/* Secondary Head */
+.div_head_2 {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background-color:#5E1996 ;
+}
+
+.p_count_hum, .p_load {
+    color: white;
+    font-size: 1rem;
+    margin-right: 1rem;
+}
+
+.audioPlayer {
+    background-image: url('../image/microphone.svg');
+    background-size: cover;
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 43px;
+    height: 43px;
+    position: relative;
+    left: -1%;
+}
+
+.p_count_hum_num {
+    border-right: 2px solid #FFFFFF;
+    padding-right: 1.5%;
+}
+
+.p_load {
+    padding-left: -0.2%;
+
+}
+.p_load {
+    margin-left: 1rem;
+}
+
+.p_count_hum {
+    margin-left: 1rem;
+}
+
+
+.p_count_hum_num, .p_load_num {
+    color: white;
+    font-size: 1rem;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
+/* Main content */
+.main {
+    position: relative;
+    background-color: #C8C8C8;
+}
+
+img[src*="schem"] {
+    width: 100%;
+    height: auto;
+}
+
+.btn_cam_1, .btn_cam_2 {
+    position: absolute;
+    background-image: url('../image/button.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    width: 55px;
+    height: 55px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn_cam_1 {
+    background-color: transparent;
+    top: 18%;
+    right: 37%;
+    rotate: -16deg;
+}
+
+.btn_cam_2 {
+    background-color: transparent;
+    top: 22%;
+    right: 3%;
+    rotate: 240deg;
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+
+    width: auto; /* Adjust width to fit content */
+    height: auto; /* Adjust height to fit content */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the modal */
+}
+
+
+.modal-content {
+    width: auto;
+    height: auto;
+    border-radius: 10px; /* Скругление углов */
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 10px;
+    border: 1px solid #888;
+
+
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.theme-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Style for the theme-selector content */
+.theme-content {
+    background-color: #752DAF;
+    margin: 15% auto;
+    border: none;
+    width: 15%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+/* Style for the 'close' button */
+.theme-close {
+    transform: translateY(-6px);
+    color: #ffffff;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.theme-close:hover,
+.theme-close:focus {
+    color: #ccc;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style for the list inside the theme-selector */
+.theme-selector-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for the list items */
+.theme-selector-list-item {
+    padding: 15px 20px; /* Padding for each item */
+    color: #FFFFFF; /* White text color */
+    border-bottom: 1px solid #7E57C2; /* Light purple border */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.theme-selector-list-item:hover {
+    background-color: #7E57C2; /* Light purple background on hover */
+}
+
+/* Style to remove the border from the last item */
+.theme-selector-list-item:last-child {
+    border-bottom: none;
+}
+
+/* Additional styling for the theme-selector header */
+.theme-header {
+    color: white;
+    padding: 10px 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* The title within the theme-header */
+.theme-title {
+    margin: 0;
+}
+
+/* Стили для всплывающего окна */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-content {
+    background-color: #fefefe;
+    padding: 20px;
+    width: 20%;
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.close-button {
+    transform: translate(-1%, -41%);
+    float: right;
+    font-size: 28px;
+    font-weight: normal; /* Нормальная жирность текста */
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Заголовок и текст внутри всплывающего окна */
+.popup-content h2,
+.popup-content p {
+    margin: 10px 0; /* Отступы сверху и снизу */
+}
+
+/* Стилизация текста заголовков внутри окна */
+.popup-content h2 {
+    font-size: 1.3rem;
+    font-weight: normal; /* Нормальная жирность текста */
+}
+
+/* Стилизация абзацев внутри окна */
+.popup-content p {
+    font-size: 1.1rem;
+    font-weight: bold; /* Жирный текст */
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+
+.feedback-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.feedback-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #FFFFFF;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+.feedback-form {
+    display: none;
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 250px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.feedback-form button {
+    padding: 8px 12px;
+    background-color: #65686c;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}

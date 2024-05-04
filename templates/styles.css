@@ -1,0 +1,185 @@
+/* Сброс стилей для всех элементов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Стили для верхней панели */
+.head_main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: #50078C;
+}
+
+.img_head_l {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.button_theme {
+    background-image: url('../image/theme.svg');
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    margin-right: 0.1rem;
+    width: 60px;
+    height: 50px;
+}
+
+.p_head {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 75rem; /* Подлежит изменению в медиазапросе */
+}
+
+/* Стили для вторичной шапки */
+.div_head_2 {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #5E1996;
+}
+
+.p_count_hum, .p_load {
+    color: white;
+    font-size: 1rem;
+    margin-right: 1rem;
+}
+
+.p_count_hum_num, .p_load_num {
+    color: white;
+    font-size: 1rem;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
+/* Стили для основного содержимого */
+.main {
+    position: relative;
+    background-color: #C8C8C8;
+    width: 80%; /* Установка ширины */
+    margin: 0 auto; /* Центрирование */
+    overflow-x: auto; /* Включение прокрутки */
+}
+
+img[src*="schem"] {
+    width: 100%;
+    height: auto;
+}
+
+.btn_cam_1, .btn_cam_2 {
+    position: absolute;
+    background-image: url('../image/button.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 55px;
+    height: 55px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn_cam_1 {
+    background-color: transparent;
+    top: 18%;
+    right: 37%;
+    rotate: -16deg;
+}
+
+.btn_cam_2 {
+    background-color: transparent;
+    top: 22%;
+    right: 3%;
+    rotate: 240deg;
+}
+
+/* Стили для модальных окон */
+.modal, .theme-overlay, .popup {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content, .theme-content, .popup-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.close, .theme-close, .close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover, .theme-close:hover, .close-button:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.theme-selector-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.theme-selector-list-item {
+    padding: 15px 20px;
+    color: #FFFFFF;
+    border-bottom: 1px solid #7E57C2;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.theme-selector-list-item:hover {
+    background-color: #7E57C2;
+}
+
+/* Медиазапросы для мобильных устройств */
+@media (max-width: 400px) {
+    .head_main, .div_head_2 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .p_head {
+        margin-right: 0; /* Убираем большое правое отступление */
+    }
+
+    .main {
+        width: 100%; /* Масштабируем на всю ширину */
+    }
+
+    .button_theme, .btn_cam_1, .btn_cam_2 {
+        width: 40px; /* Уменьшение размера кнопок */
+        height: 40px;
+    }
+
+    .modal-content, .popup-content {
+        width: 90%; /* Увеличиваем ширину модальных окон для лучшей видимости */
+    }
+
+    .theme-content {
+        width: 80%; /* Увеличиваем ширину списка тем */
+    }
+}

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вега - заказ</title>
+</head>
+
+<body>
+    <div class="header">
+        <img class="img_logo" src="../static/image/logo.png" alt="logo">
+        <p class="order_p_head">Заказы</p>
+        <button class="btn_home" id="btn_home"></button>
+        <button class="btn_theme" id="theme"></button>
+    </div>
+
+    <div class="div_main">
+        <p class="order_p">Оформление заказа</p>
+        <div>
+            <input class="i_name" type="text" placeholder="Ваше ФИО">
+        </div>
+        <div>
+            <input class="i_time" type="time">
+            <p class="name_p">Приготовить к...</p>
+        </div>
+    </div>
+
+    <div class="menu_div">
+        <div id="fst" class="breakfast_div">
+            <p class="breakfast_p">Завтрак</p>
+            <img src="../static/image/breakfast.png" alt="" class="breakfast_img">
+        </div>
+
+        <div class="breakfast_div">
+            <p class="breakfast_p">Обед</p>
+            <img src="../static/image/lunch.png" alt="" class="breakfast_img">
+        </div>
+
+        <div class="breakfast_div">
+            <p class="breakfast_p">Ужин</p>
+            <img src="../static/image/dinner.png" alt="" class="breakfast_img">
+        </div>
+
+        <p class="total">Итого:</p>
+        <p class="total_price">100р.</p>
+
+        <button class="place_an_order_btn">
+            <p class="place_an_order">Оформить заказ</p>
+        </button>
+        <p class="info_for_order">Для получения назовите ваше ФИО</p>
+    </div>
+
+    <div class="footer">
+        <img class="logo_un" src="../static/image/logo_un.png" alt="">
+        <p class="res_ver">Ресторан “Вега”<br> университета “Сириус”</p>
+        <p class="contac_us_p">Контакты для обратной связи:</p>
+        <p class="contac_us_poch">kvntrmforissues@mail.ru</p>
+        <a href=""></a>
+    </div>
+</body>
+
+<script>
+    fetch('/api/menu/get')
+        .then(response => response.json())
+        .then(data => {
+            for (let i = 0; i < data.length; i++) {
+                console.log(data[i]);
+
+                let d = document.createElement('div');
+                d.className = 'position_1';
+
+                let p1 = document.createElement('p');
+                p1.className = 'position_1_p';
+                p1.innerHTML = `${data[i]['name']} (${data[i]['type']})`;
+
+                let p2 = document.createElement('p'); // Create p2 correctly
+                p2.className = 'position_1_price'; // Set class for p2
+                p2.innerHTML = `${data[i]['price']}р.`; // Set innerHTML for p2
+
+                let ipt = document.createElement('input');
+                ipt.className = 'checkboxes';
+                ipt.id = data[i]['id'];
+                ipt.type = 'checkbox';
+
+                d.appendChild(p1)
+                d.appendChild(p2)
+                d.appendChild(ipt)
+                document.getElementById('fst').appendChild(d);
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+</script>
+
+<style>
+    @font-face {
+        font-family: 'Gilroy-Bold';
+        src: url('../static/css/gilroy-bold.eot');
+        /* IE 9 Compatibility Mode */
+        src: url('../static/css/gilroy-bold.eot?#iefix') format('embedded-opentype'),
+            /* IE < 9 */
+            url('../static/css/gilroy-bold.woff2') format('woff2'),
+            /* Super Modern Browsers */
+            url('../static/css/gilroy-bold.woff') format('woff'),
+            /* Firefox >= 3.6, any other modern browser */
+            url('../static/css/gilroy-bold.ttf') format('truetype'),
+            /* Safari, Android, iOS */
+            url('../static/css/gilroy-bold.svg#gilroy-bold') format('svg');
+        /* Chrome < 4, Legacy iOS */
+    }
+
+    @font-face {
+        font-family: 'Gilroy-Medium';
+        src: url('../static/css/gilroy-medium.eot');
+        /* IE 9 Compatibility Mode */
+        src: url('../static/css/gilroy-medium.eot?#iefix') format('embedded-opentype'),
+            /* IE < 9 */
+            url('../static/css/gilroy-medium.woff2') format('woff2'),
+            /* Super Modern Browsers */
+            url('../static/css/gilroy-medium.woff') format('woff'),
+            /* Firefox >= 3.6, any other modern browser */
+            url('../static/css/gilroy-medium.ttf') format('truetype'),
+            /* Safari, Android, iOS */
+            url('../static/css/gilroy-medium.svg#gilroy-medium') format('svg');
+        /* Chrome < 4, Legacy iOS */
+    }
+
+    * {
+        font-family: 'Gilroy-Medium';
+        margin: 0;
+        padding: 0;
+    }
+
+    .header {
+        background-color: #50078C;
+        width: 100%;
+        height: 6vh;
+    }
+
+    .img_logo {
+        position: absolute;
+        padding-left: 0.5vw;
+        padding-top: 4px;
+        width: 5.5vh;
+        height: 5.5vh;
+    }
+
+    .order_p_head {
+        position: absolute;
+        color: #ffffff;
+        padding-top: 0.3vw;
+        font-size: 2vw;
+        padding-left: 4vw;
+    }
+
+    .btn_home {
+        background-image: url(../static/image/home.png);
+        width: 37px;
+        height: 37px;
+        margin-top: 1px;
+        margin-left: 92vw;
+        border: none;
+        background-repeat: no-repeat;
+        position: absolute;
+    }
+
+    .btn_theme {
+        position: absolute;
+        background-image: url(../static/image/theme.png);
+        width: 42px;
+        height: 42px;
+        margin-left: 96vw;
+        border: none;
+        background-repeat: no-repeat;
+    }
+
+    .div_main {
+        width: 100%;
+        height: 250px;
+    }
+
+    .order_p {
+        font-family: 'Gilroy-Bold';
+        font-size: 2.2vw;
+        padding-left: 43vw;
+        padding-top: 2vw;
+    }
+
+    .i_name {
+        margin-left: 25vw;
+        width: 50vw;
+        height: 25px;
+        margin-top: 2vw;
+        border-bottom: solid 1 px #000000;
+        font-size: 1.5vw;
+    }
+
+    .i_time {
+        margin-left: 25vw;
+        width: 50vw;
+        height: 35px;
+        margin-top: 2vw;
+        border-bottom: solid 1 px #000000;
+        font-size: 1.5vw;
+    }
+
+    .name_p {
+        margin-top: 1vw;
+        margin-left: 25vw;
+        font-size: 1.5vw;
+    }
+
+    .menu_div {
+        margin-left: 17vw;
+        width: 60vw;
+        height: 143vw;
+    }
+
+    .breakfast_div {
+        width: 68.5vw;
+        margin-top: 3vw;
+        border: #E7E7E7 1px solid;
+        border-radius: 8px;
+    }
+
+    .breakfast_p {
+        padding-left: 1vw;
+        position: absolute;
+        padding-top: 2vw;
+        font-size: 2.7vw;
+    }
+
+    .breakfast_img {
+        padding-left: 10vw;
+        border: none;
+        padding-left: 32.3vw;
+        border-radius: 10px;
+    }
+
+    .position_1 {
+        padding-left: 1vw;
+        height: 5vw;
+        width: 65vw;
+    }
+
+    .position_1_p {
+        position: absolute;
+        font-size: 1.7vw;
+        margin-top: 1.5vw;
+    }
+
+    .position_1_price {
+        font-size: 2vw;
+        position: absolute;
+        margin-top: 1.5vw;
+        margin-left: 58vw;
+        text-align: left;
+    }
+
+    .checkboxes {
+        margin-top: 2.3vw;
+        margin-left: 63vw;
+        text-align: left;
+    }
+
+    .position_1 {
+        border-bottom: #E7E7E7 1px solid;
+        width: 68.5vw;
+    }
+
+    .total {
+        margin-top: 1.5vw;
+        font-family: 'Gilroy-Bold';
+        font-size: 3vw;
+        position: absolute;
+    }
+
+    .total_price {
+        margin-left: 60vw;
+        margin-top: 1.5vw;
+        font-family: 'Gilroy-Bold';
+        font-size: 3vw;
+        position: absolute;
+    }
+
+    .place_an_order_btn {
+        margin-left: 25vw;
+        width: 15vw;
+        height: 2.5vw;
+        border-radius: 7px;
+        border: none;
+        background-color: #03B7AC;
+        margin-top: 5vw;
+    }
+
+    .place_an_order {
+        color: #ffffff;
+        font-size: 1.6vw;
+        font-family: 'Gilroy-Bold';
+    }
+
+    .info_for_order {
+        margin-left: 24.9vw;
+        margin-top: 0.4vw;
+        color: #646464;
+    }
+
+    .footer {
+        background-color: #50078C;
+        width: 100%;
+        height: 10vw;
+    }
+
+    .logo_un {
+        position: absolute;
+        width: 15vw;
+        height: 5vw;
+        padding-top: 2.5vw;
+    }
+
+    .res_ver {
+        position: absolute;
+        color: #ffffff;
+        font-size: 1.2vw;
+        padding-top: 3.8vw;
+        padding-left: 16vw;
+    }
+
+    .contac_us_p {
+        font-family: 'Gilroy-Bold';
+        color: #ffffff;
+        padding-top: 3.5vw;
+        padding-left: 80vw;
+        font-size: 1.2vw;
+    }
+
+    .contac_us_poch {
+        padding-top: 0.3vw;
+        color: #ffffff;
+        padding-left: 87vw;
+    }
+</style>
+
+</html>

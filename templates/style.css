@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'g.ttf', 'Roboto', sans-serif;
+}
+
+.head_main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: #50078C;
+}
+
+.img_head_l {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.button_theme {
+    background-image: url('../image/theme.svg');
+    background-size: cover;
+    background-color: transparent;
+
+    border: none;
+    margin-right: 0.1rem;
+
+    width: 60px;
+    height: 50px;
+}
+
+.p_head{
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 75rem;
+}
+
+/* Secondary Head */
+.div_head_2 {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background-color:#5E1996 ;
+}
+
+.p_count_hum, .p_load {
+    color: white;
+    font-size: 1rem;
+    margin-right: 1rem;
+}
+
+.p_load {
+    margin-left: 1rem;
+}
+
+.p_count_hum {
+    margin-left: 1rem;
+}
+
+
+.p_count_hum_num, .p_load_num {
+    color: white;
+    font-size: 1rem;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
+/* Main content */
+.main {
+    position: relative;
+    background-color: #C8C8C8;
+}
+
+img[src*="schem"] {
+    width: 100%;
+    height: auto;
+}
+
+
+.btn_q_1:hover, .btn_q_2:hover {
+    background-color: lightgray;
+}
+
+.btn_cam_1:hover, .btn_cam_2:hover {
+    background-color: lightgray;
+}
+
+
+.btn_cam_1, .btn_cam_2 {
+    position: absolute;
+    background-image: url('../image/button.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+
+    width: 55px;
+    height: 55px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn_cam_1 {
+    background-color: transparent;
+    top: 18%;
+    right: 37%;
+    rotate: -16deg;
+}
+
+.btn_cam_2 {
+    background-color: transparent;
+    top: 22%;
+    right: 3%;
+    rotate: 240deg;
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+
+    width: auto; /* Adjust width to fit content */
+    height: auto; /* Adjust height to fit content */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the modal */
+}
+
+
+.modal-content {
+    width: auto;
+    height: auto;
+    border-radius: 10px; /* Скругление углов */
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 10px;
+    border: 1px solid #888;
+
+
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.theme-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Style for the theme-selector content */
+.theme-content {
+    background-color: #752DAF;
+    margin: 15% auto;
+    border: none;
+    width: 15%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+/* Style for the 'close' button */
+.theme-close {
+    transform: translateY(-6px);
+    color: #ffffff;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.theme-close:hover,
+.theme-close:focus {
+    color: #ccc;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style for the list inside the theme-selector */
+.theme-selector-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for the list items */
+.theme-selector-list-item {
+    padding: 15px 20px; /* Padding for each item */
+    color: #FFFFFF; /* White text color */
+    border-bottom: 1px solid #7E57C2; /* Light purple border */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.theme-selector-list-item:hover {
+    background-color: #7E57C2; /* Light purple background on hover */
+}
+
+/* Style to remove the border from the last item */
+.theme-selector-list-item:last-child {
+    border-bottom: none;
+}
+
+/* Additional styling for the theme-selector header */
+.theme-header {
+    color: white;
+    padding: 10px 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* The title within the theme-header */
+.theme-title {
+    margin: 0;
+}
+
+/* Стили для всплывающего окна */
+.popup {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Фиксированное позиционирование */
+    z-index: 10; /* Указывает, что окно будет над другими элементами */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный фон вокруг окна */
+}
+
+.popup-content {
+    background-color: #fefefe;
+    padding: 20px;
+    width: auto;
+    max-width: 400px; /* Увеличенная максимальная ширина содержимого */
+    min-height: 150px; /* Установленная минимальная высота содержимого */
+    position: absolute; /* Абсолютное позиционирование */
+    top: 50%; /* Позиционирование по центру относительно всего экрана */
+    left: 80%;
+    transform: translate(-50%, -50%); /* Смещение для точного центрирования */
+    border-radius: 10px; /* Скругление углов */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Тень вокруг окна */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: normal; /* Нормальная жирность текста */
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Заголовок и текст внутри всплывающего окна */
+.popup-content h2,
+.popup-content p {
+    margin: 10px 0; /* Отступы сверху и снизу */
+    font-family: 'Roboto', sans-serif; /* Указание шрифта */
+}
+
+/* Стилизация текста заголовков внутри окна */
+.popup-content h2 {
+    color: #333;
+    font-size: 1.3rem;
+    font-weight: normal; /* Нормальная жирность текста */
+}
+
+/* Стилизация абзацев внутри окна */
+.popup-content p {
+    font-size: 1.1rem;
+    font-weight: bold; /* Жирный текст */
+    margin-bottom: 30px;
+    margin-top: 30px;
+}

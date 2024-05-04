@@ -1,0 +1,269 @@
+/* Сброс стилей для всех элементов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Стили для верхней панели */
+.head_main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: #50078C;
+}
+
+.img_head_l {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.button_theme {
+    background-image: url('../image/theme.svg');
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    margin-right: 1%;
+}
+
+.p_head {
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* Стили для вторичной шапки */
+.div_head_2 {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #5E1996;
+    justify-content: space-between;
+}
+
+.p_count_hum, .p_load {
+    color: white;
+    font-size: 1rem;
+    margin-right: 1rem;
+}
+
+.p_count_hum_num, .p_load_num {
+    color: white;
+    font-size: 1rem;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
+.p_count_hum_num {
+    border-right: 2px solid #FFFFFF;
+    padding-right: 5%;
+}
+/* Стили для основного содержимого */
+.main {
+    position: relative;
+    background-color: #C8C8C8;
+    width: 80%; /* Установка ширины */
+    margin: 0 auto; /* Центрирование */
+    overflow-x: auto; /* Включение прокрутки */
+}
+
+img[src*="schem"] {
+    width: auto;
+    height: auto;
+}
+
+.btn_cam_1, .btn_cam_2 {
+    position: absolute;
+    background-image: url('../image/button.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 6%;
+    height: 6%;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn_cam_1 {
+    background-color: transparent;
+    top: 18%;
+    left: 230%;
+    rotate: -16deg;
+}
+
+.btn_cam_2 {
+    background-color: transparent;
+    top: 22%;
+    left: 340%;
+    rotate: 240deg;
+}
+
+/* Стили для модальных окон */
+.modal, .theme-overlay, .popup {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content, .theme-content, .popup-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.close, .theme-close, .close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover, .theme-close:hover, .close-button:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.theme-content {
+    background-color: #752DAF;
+    color: #FFFFFF;
+    margin: 15% auto;
+    border: none;
+    width: 15%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.theme-selector-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.theme-selector-list-item {
+    padding: 15px 20px; /* Padding for each item */
+     : #FFFFFF; /* White text color */
+    border-bottom: 1px solid #7E57C2; /* Light purple border */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.theme-selector-list-item:hover {
+    background-color: #7E57C2;
+}
+
+.audioPlayer {
+    background-image: url('../image/microphone.svg');
+    background-size: cover;
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 40px;
+}
+
+/* Медиазапросы для мобильных устройств */
+@media (max-width: 600px) {
+    .p_count_hum_num, .p_load_num {
+        font-size: 0.8rem;
+    }
+    .p_count_hum, .p_load {
+        font-size: 0.7rem;
+    }
+
+    .img[src*="schem"] {
+        height: fit-content;
+        width: fit-content;
+    }
+
+    .head_main, .div_head_2 {
+        flex-direction: initial;
+    }
+
+    .p_head {
+       font-size: 100%;
+    }
+
+    .main {
+        width: 100%; /* Масштабируем на всю ширину */
+    }
+
+    .button_theme {
+        width: 44px; /* Уменьшение размера кнопок */
+        height: 26px;
+    }
+
+    .btn_cam_1, .btn_cam_2 {
+        width: 14%; /* Уменьшение размера кнопок */
+        height: 14%;
+    }
+
+    .modal-content {
+        width: 100%;
+    }
+
+    .popup-content {
+        width: 50%;
+        height: 28%;
+        min-width: 200px;
+        min-height: 260px;
+    }
+
+    .theme-content {
+        width: 60%;
+    }
+
+    #many_people, #many_min {
+        font-size: 1rem;
+    }
+
+    .theme-title {
+         font-size: 163%;
+    }
+
+    .popup-content h2, .popup-content p {
+    margin: 10px 0; /* Отступы сверху и снизу */
+    }
+
+/* Стилизация текста заголовков внутри окна */
+    .popup-content h2 {
+        font-weight: normal; /* Нормальная жирность текста */
+    }
+
+    /* Стилизация абзацев внутри окна */
+    .popup-content p {
+        font-size: 1.1rem;
+        font-weight: bold; /* Жирный текст */
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+
+    .img_head_l {
+        max-width: 29px;
+        max-height : 30px;
+
+        width: 8%;
+        height: 14%;
+    }
+}
+

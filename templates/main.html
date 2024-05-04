@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="../static/css/g.ttf">
+    <link rel="preconnect" href="../static/css/gilroy-medium.ttf">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue check</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+    <div class="head_main">
+        <img class="img_head_l" src="../static/image/sirius.svg">
+        <p class="p_head">Очереди</p>
+        <button class="audioPlayer" onclick="playAudio()"></button>
+        <audio id='player' style="display:none;">
+            <source id='mp3' type="audio/mpeg">
+        </audio>
+        <button class="button_theme"></button>
+    </div>
+    
+    <div class="main">
+        <img class=schema_img src="../static/image/schema_default.svg">
+        <div id="triggerArea" style="position: absolute; top: 15%; left: 70%; width: 26%; height: 5%; cursor: pointer;">
+        </div>
+        <button class="btn_cam_1"></button>
+        <button class="btn_cam_2"></button>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p class="video_text">Видеопоток с камеры</p>
+            <img id="videoPlayer" width="750">
+        </div>
+    </div>
+    <div id="themeSelector" class="theme-overlay">
+        <div class="theme-content">
+            <div class="theme-header">
+                <span class="theme-close">&times;</span>
+                <h2 class="theme-title">Темы</h2>
+            </div>
+            <ul class="theme-selector-list">
+                <li class="theme-selector-list-item">Светлая</li>
+                <li class="theme-selector-list-item">Темная</li>
+                <li class="theme-selector-list-item">Черно-белая</li>
+                <li class="theme-selector-list-item">Бело-черная</li>
+                <li class="theme-selector-list-item">Синяя</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="infoPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-button">&times;</span>
+            <h2 id="many_people">Количество людей в очереди:</h2>
+            <p id="queueCount">Загрузка...</p>
+            <h2 id="many_min">Сколько времени займет ожидание:</h2>
+            <p id="waitTime">Загрузка...</p>
+            <h2>Предсказание:</h2>
+            <p id="predict">Загрузка...</p>
+        </div>
+    </div>
+
+    <div>
+        <div class="feedback-btn">
+            <div class="feedback-circle" onclick="toggleFeedbackForm()"
+                style="background-image: url('https://cdn-icons-png.flaticon.com/512/84/84139.png');"></div>
+            <div class="feedback-form" id="feedbackForm">
+                <form>
+                    <input id="name" type="text" placeholder="Ваш никнейм в telegram">
+                    <textarea id="feedback" placeholder="Оставьте свой отзыв..."></textarea>
+                    <button type="submit" onclick="send()">Отправить</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script src="{{url_for('static', filename='js/update_head.js')}}"></script>
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
+    <script>
+        function playAudio() {
+            var mp = document.getElementById("mp3");
+            var timestamp = new Date().getTime();  // Получение текущего времени в миллисекундах
+            mp.src = 'http://127.0.0.1:8000/get_audio?t=' + timestamp;  // Добавление метки времени к URL
+
+            var audio = document.getElementById("player");
+            audio.load();  // Нужно загрузить новый источник файла в элемент <audio>
+            audio.style.display = "block";
+            audio.play();
+        }
+
+        function toggleFeedbackForm() {
+            var feedbackForm = document.getElementById("feedbackForm");
+            if (feedbackForm.style.display === "none" || feedbackForm.style.display === "") {
+                feedbackForm.style.display = "block";
+            } else {
+                feedbackForm.style.display = "none";
+            }
+        }
+
+        function send() {
+            event.preventDefault();
+
+            let name = document.getElementById('name').value;
+            let feedback = document.getElementById('feedback').value;
+
+            const regex = /^@[a-zA-Z0-9_]{4,31}$/;
+
+            if (feedback.length === 0 || !regex.test(name)) {
+                alert("Одно из полей незаполненно или некорректно");
+            } else {
+                fetch('/api/feedback/post', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, feedback })
+                })
+                    .then(response => {
+                        alert("Обратная связь отправлена");
+                        document.getElementById('name').value = "";
+                        document.getElementById('feedback').value = "";
+                        toggleFeedbackForm();
+                    })
+                    .catch(error => {
+                        console.error('Ошибка при отправки обратной связи:', error);
+                        alert('Произошла ошибка');
+                    });
+            }
+        }
+    </script>
+
+</body>
+
+</html>
